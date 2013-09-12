@@ -682,13 +682,13 @@ public:
 	//!\param s Font size
 	//!\param c Font color
 	GuiText(std::string t, int s, XeColor c);
-	GuiText(std::string t, int s, uint32_t c);
+	GuiText(std::string t, int s, uint32_t c);	
 	//GuiText(const char * t, int s, XeColor c);
 	//GuiText(const char * t, int s, uint32_t c);
 	//!\overload
 	//!Assumes SetPresets() has been called to setup preferred text attributes
 	//!\param t Text
-	GuiText(std::string t);	
+	GuiText(std::string t);
 	//GuiText(const char * t);
 	//!Destructor
 	~GuiText();
@@ -698,7 +698,8 @@ public:
 	void SetText(std::string t);
 	//!Sets the text of the GuiText element
 	//!\param t UTF-8 Text
-	void SetWText(wchar_t * t);
+	void SetWText(std::wstring t);
+	//void SetWText(wchar_t * t);
 	//!Gets the translated text length of the GuiText element
 	int GetLength();
 	//!Sets up preset values to be used by GuiText(t)
@@ -742,10 +743,10 @@ public:
 	int GetLeft();
 protected:
 	XeColor color; //!< Font color
-	wchar_t* text; //!< Translated Unicode text value
-	wchar_t *textDyn[20]; //!< Text value, if max width, scrolling, or wrapping enabled
+	std::wstring text; //!< Translated Unicode text value
+	std::wstring textDyn[20]; //!< Text value, if max width, scrolling, or wrapping enabled
 	int textDynNum; //!< Number of text lines
-	char * origText; //!< Original text data (English)
+	std::string origText; //!< Original text data (English)
 	int size; //!< Font size
 	int maxWidth; //!< Maximum width of the generated text object (for text wrapping)
 	int textScroll; //!< Scrolling toggle
